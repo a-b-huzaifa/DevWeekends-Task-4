@@ -61,6 +61,6 @@ An interactive test designed to challenge and verify understanding of modern JS 
 
 ## Technical & Implementation Details
 
-- **Modular Architecture**: The codebase in [script.js](file:///c:/Users/HUZI/OneDrive/Desktop/DevWeekends/DevWeekends%20Task%204/script.js) is structured using Immediately Invoked Function Expressions (IIFEs) ([protoModule](file:///c:/Users/HUZI/OneDrive/Desktop/DevWeekends/DevWeekends%20Task%204/script.js#L20), [generatorModule](file:///c:/Users/HUZI/OneDrive/Desktop/DevWeekends/DevWeekends%20Task%204/script.js#L232), and [quizModule](file:///c:/Users/HUZI/OneDrive/Desktop/DevWeekends/DevWeekends%20Task%204/script.js#L474)) to encapsulate logic, avoid global scope pollution, and demonstrate clean code isolation.
+- **Modular Architecture**: The codebase in [script.js] is structured using Immediately Invoked Function Expressions (IIFEs) ([protoModule](script.js#L20), [generatorModule](script.js#L232), and [quizModule](script.js#L474)) to encapsulate logic, avoid global scope pollution, and demonstrate clean code isolation.
 - **Dynamic Tab Routing**: Uses custom HTML `data-` attributes to toggle section visibility without reloading.
-- **CSS Custom Properties**: The styling in [style.css](file:///c:/Users/HUZI/OneDrive/Desktop/DevWeekends/DevWeekends%20Task%204/style.css) utilizes design tokens to maintain a consistent Neo-Brutalist color palette and spacing layout across components.
+- **CSS Custom Properties**: The styling in [style.css](style.css) utilizes design tokens to maintain a consistent Neo-Brutalist color palette and spacing layout across components.
