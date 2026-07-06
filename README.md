@@ -58,7 +58,6 @@ An interactive test designed to challenge and verify understanding of modern JS 
   - Computes a final letter grade and descriptive evaluation based on correct responses on completion.
 
 ---
-
 ## Technical & Implementation Details
 
 - **Modular Architecture**: The codebase in [script.js] is structured using Immediately Invoked Function Expressions (IIFEs) ([protoModule](script.js#L20), [generatorModule](script.js#L232), and [quizModule](script.js#L474)) to encapsulate logic, avoid global scope pollution, and demonstrate clean code isolation.

@@ -1,6 +1,6 @@
-/* ── Tabs ── */
+/* Tabs */
 const tabBtns = document.querySelectorAll('.tab-btn');
-const panels  = document.querySelectorAll('.panel');
+const panels = document.querySelectorAll('.panel');
 
 tabBtns.forEach(btn => {
   btn.addEventListener('click', () => {
@@ -12,14 +12,14 @@ tabBtns.forEach(btn => {
   });
 });
 
-/* ════════════════════════════════════════════
+/* 
    DEMO 1 — PROTOTYPE CHAIN EXPLORER
    Concepts: prototypes, Object.create, ES6 classes,
              prototype chain lookup, hasOwnProperty
-════════════════════════════════════════════ */
+ */
 (function protoModule() {
 
-  // ── Chain definitions for each type ──────────────────────────
+  // Chain definitions for each type    
   const chainDefs = {
     object: [
       {
@@ -127,38 +127,38 @@ tabBtns.forEach(btn => {
     ]
   };
 
-  // ── Lookup table: property → where it lives ───────────────────
+  //  Lookup table: property → where it lives
   const lookupTable = {
     // own / universal
-    hasOwnProperty:  { layer: 'Object.prototype', type: 'chain' },
-    toString:        { layer: 'Object.prototype', type: 'chain' },
-    valueOf:         { layer: 'Object.prototype', type: 'chain' },
-    isPrototypeOf:   { layer: 'Object.prototype', type: 'chain' },
-    toLocaleString:  { layer: 'Object.prototype', type: 'chain' },
-    constructor:     { layer: 'prototype of your type', type: 'chain' },
+    hasOwnProperty: { layer: 'Object.prototype', type: 'chain' },
+    toString: { layer: 'Object.prototype', type: 'chain' },
+    valueOf: { layer: 'Object.prototype', type: 'chain' },
+    isPrototypeOf: { layer: 'Object.prototype', type: 'chain' },
+    toLocaleString: { layer: 'Object.prototype', type: 'chain' },
+    constructor: { layer: 'prototype of your type', type: 'chain' },
     // array
-    push:    { layer: 'Array.prototype', type: 'chain' },
-    pop:     { layer: 'Array.prototype', type: 'chain' },
-    map:     { layer: 'Array.prototype', type: 'chain' },
-    filter:  { layer: 'Array.prototype', type: 'chain' },
-    reduce:  { layer: 'Array.prototype', type: 'chain' },
+    push: { layer: 'Array.prototype', type: 'chain' },
+    pop: { layer: 'Array.prototype', type: 'chain' },
+    map: { layer: 'Array.prototype', type: 'chain' },
+    filter: { layer: 'Array.prototype', type: 'chain' },
+    reduce: { layer: 'Array.prototype', type: 'chain' },
     forEach: { layer: 'Array.prototype', type: 'chain' },
-    find:    { layer: 'Array.prototype', type: 'chain' },
-    slice:   { layer: 'Array.prototype', type: 'chain' },
-    splice:  { layer: 'Array.prototype', type: 'chain' },
-    includes:{ layer: 'Array.prototype', type: 'chain' },
-    length:  { layer: 'the object itself (own)', type: 'own' },
+    find: { layer: 'Array.prototype', type: 'chain' },
+    slice: { layer: 'Array.prototype', type: 'chain' },
+    splice: { layer: 'Array.prototype', type: 'chain' },
+    includes: { layer: 'Array.prototype', type: 'chain' },
+    length: { layer: 'the object itself (own)', type: 'own' },
     // function
-    call:    { layer: 'Function.prototype', type: 'chain' },
-    apply:   { layer: 'Function.prototype', type: 'chain' },
-    bind:    { layer: 'Function.prototype', type: 'chain' },
-    name:    { layer: 'the object itself (own)', type: 'own' },
+    call: { layer: 'Function.prototype', type: 'chain' },
+    apply: { layer: 'Function.prototype', type: 'chain' },
+    bind: { layer: 'Function.prototype', type: 'chain' },
+    name: { layer: 'the object itself (own)', type: 'own' },
     // own example props
-    make:    { layer: 'the instance (own)',  type: 'own' },
-    speed:   { layer: 'the instance (own)',  type: 'own' },
-    doors:   { layer: 'the instance (own)',  type: 'own' },
+    make: { layer: 'the instance (own)', type: 'own' },
+    speed: { layer: 'the instance (own)', type: 'own' },
+    doors: { layer: 'the instance (own)', type: 'own' },
     // class methods
-    describe:   { layer: 'Car.prototype',     type: 'chain' },
+    describe: { layer: 'Car.prototype', type: 'chain' },
     accelerate: { layer: 'Vehicle.prototype', type: 'chain' },
   };
 
@@ -166,7 +166,7 @@ tabBtns.forEach(btn => {
 
   function renderChain(type) {
     const nodes = chainDefs[type];
-    const wrap  = document.getElementById('protoChain');
+    const wrap = document.getElementById('protoChain');
     wrap.innerHTML = '';
     nodes.forEach((node, i) => {
       const el = document.createElement('div');
@@ -224,26 +224,26 @@ tabBtns.forEach(btn => {
   renderChain('object');
 })();
 
-/* ════════════════════════════════════════════
+/* 
    DEMO 2 — GENERATOR & ITERATOR VISUALISER
    Concepts: function*, yield, iterator protocol,
              Symbol.iterator, spread, for...of
-════════════════════════════════════════════ */
+*/
 (function generatorModule() {
 
-  // ── Generator factory definitions ────────────────────────────
+  // Generator factory definitions
   const genDefs = {
     range: {
       label: 'Range Generator',
       controls: [
         { id: 'rangeStart', label: 'start', default: 1 },
-        { id: 'rangeEnd',   label: 'end',   default: 8 },
-        { id: 'rangeStep',  label: 'step',  default: 1 },
+        { id: 'rangeEnd', label: 'end', default: 8 },
+        { id: 'rangeStep', label: 'step', default: 1 },
       ],
       make(inputs) {
         const start = parseInt(inputs.rangeStart) || 1;
-        const end   = parseInt(inputs.rangeEnd)   || 8;
-        const step  = parseInt(inputs.rangeStep)  || 1;
+        const end = parseInt(inputs.rangeEnd) || 8;
+        const step = parseInt(inputs.rangeStep) || 1;
         function* range(s, e, st) {
           let cur = s;
           while (cur <= e) { yield cur; cur += st; }
@@ -253,14 +253,14 @@ tabBtns.forEach(btn => {
       code(inputs) {
         const s = inputs.rangeStart || 1, e = inputs.rangeEnd || 8, st = inputs.rangeStep || 1;
         return [
-          ['kw','function'], ['','* '], ['fn','range'], ['','(start, end, step = 1) {'],
-          ['cm','  // pauses at each yield, resumes on .next()'],
-          ['kw','  let'], ['',' cur = start;'],
-          ['kw','  while'], [' (cur <= end) {'],
-          ['kw','    yield'], [' cur;'],
-          ['','    cur += step;'],
-          ['','}'],
-          ['cm',`\n// current call: range(${s}, ${e}, ${st})`],
+          ['kw', 'function'], ['', '* '], ['fn', 'range'], ['', '(start, end, step = 1) {'],
+          ['cm', '  // pauses at each yield, resumes on .next()'],
+          ['kw', '  let'], ['', ' cur = start;'],
+          ['kw', '  while'], [' (cur <= end) {'],
+          ['kw', '    yield'], [' cur;'],
+          ['', '    cur += step;'],
+          ['', '}'],
+          ['cm', `\n// current call: range(${s}, ${e}, ${st})`],
         ];
       }
     },
@@ -274,20 +274,20 @@ tabBtns.forEach(btn => {
         const max = parseInt(inputs.fibMax) || 100;
         function* fibonacci(limit) {
           let [a, b] = [0, 1];
-          while (a <= limit) { yield a; [a, b] = [b, a + b]; }
+          while (a <= limit) { yield a;[a, b] = [b, a + b]; }
         }
         return { gen: fibonacci(max), finite: true };
       },
       code(inputs) {
         const m = inputs.fibMax || 100;
         return [
-          ['kw','function'], ['','* '], ['fn','fibonacci'], ['','(limit) {'],
-          ['kw','  let'], [' [a, b] = ['], ['num','0'], [', '], ['num','1'], ['];'],
-          ['kw','  while'], [' (a <= limit) {'],
-          ['kw','    yield'], [' a;'],
-          ['','    [a, b] = [b, a + b];'],
-          ['','}'],
-          ['cm',`\n// stop after value > ${m}`],
+          ['kw', 'function'], ['', '* '], ['fn', 'fibonacci'], ['', '(limit) {'],
+          ['kw', '  let'], [' [a, b] = ['], ['num', '0'], [', '], ['num', '1'], ['];'],
+          ['kw', '  while'], [' (a <= limit) {'],
+          ['kw', '    yield'], [' a;'],
+          ['', '    [a, b] = [b, a + b];'],
+          ['', '}'],
+          ['cm', `\n// stop after value > ${m}`],
         ];
       }
     },
@@ -301,22 +301,22 @@ tabBtns.forEach(btn => {
       },
       code() {
         return [
-          ['kw','function'], ['','* '], ['fn','naturals'], ['','() {'],
-          ['kw','  let'], [' n = '], ['num','1'], [';'],
-          ['kw','  while'], [' ('], ['kw','true'], [') {'],
-          ['kw','    yield'], [' n++;'],
-          ['','}'],
-          ['cm','\n// infinite — use .next() or break in for...of'],
+          ['kw', 'function'], ['', '* '], ['fn', 'naturals'], ['', '() {'],
+          ['kw', '  let'], [' n = '], ['num', '1'], [';'],
+          ['kw', '  while'], [' ('], ['kw', 'true'], [') {'],
+          ['kw', '    yield'], [' n++;'],
+          ['', '}'],
+          ['cm', '\n// infinite — use .next() or break in for...of'],
         ];
       }
     }
   };
 
   let activeGenKey = 'range';
-  let currentGen   = null;
-  let callCount    = 0;
-  let isDone       = false;
-  let inputValues  = {};
+  let currentGen = null;
+  let callCount = 0;
+  let isDone = false;
+  let inputValues = {};
 
   function getInputValues() {
     const def = genDefs[activeGenKey];
@@ -330,7 +330,7 @@ tabBtns.forEach(btn => {
 
   function renderControls() {
     const ctrl = document.getElementById('genControls');
-    const def  = genDefs[activeGenKey];
+    const def = genDefs[activeGenKey];
     ctrl.innerHTML = '';
     def.controls.forEach(c => {
       const grp = document.createElement('div');
@@ -342,9 +342,9 @@ tabBtns.forEach(btn => {
   }
 
   function renderCode() {
-    const def    = genDefs[activeGenKey];
+    const def = genDefs[activeGenKey];
     const tokens = def.code(inputValues);
-    const box    = document.getElementById('genCode');
+    const box = document.getElementById('genCode');
     box.innerHTML = tokens.map(([cls, txt]) =>
       cls ? `<span class="${cls}">${txt}</span>` : txt
     ).join('');
@@ -354,15 +354,15 @@ tabBtns.forEach(btn => {
     inputValues = getInputValues();
     const result = genDefs[activeGenKey].make(inputValues);
     currentGen = result.gen;
-    callCount  = 0;
-    isDone     = false;
+    callCount = 0;
+    isDone = false;
 
-    document.getElementById('genTape').innerHTML  = '<span class="tape-empty">Press Next to start the generator…</span>';
+    document.getElementById('genTape').innerHTML = '<span class="tape-empty">Press Next to start the generator…</span>';
     document.getElementById('genValue').textContent = '—';
-    document.getElementById('genDone').textContent  = 'false';
+    document.getElementById('genDone').textContent = 'false';
     document.getElementById('genCalls').textContent = '0';
-    document.getElementById('btnGenNext').disabled  = false;
-    document.getElementById('genDone').style.color  = 'var(--accent2)';
+    document.getElementById('btnGenNext').disabled = false;
+    document.getElementById('genDone').style.color = 'var(--accent2)';
     renderCode();
   }
 
@@ -393,11 +393,11 @@ tabBtns.forEach(btn => {
       cell.textContent = 'done';
       tape.appendChild(cell);
       document.getElementById('genValue').textContent = 'undefined';
-      document.getElementById('btnGenNext').disabled  = true;
+      document.getElementById('btnGenNext').disabled = true;
     }
 
-    document.getElementById('genDone').textContent  = String(done);
-    document.getElementById('genDone').style.color  = done ? 'var(--accent3)' : 'var(--accent2)';
+    document.getElementById('genDone').textContent = String(done);
+    document.getElementById('genDone').style.color = done ? 'var(--accent3)' : 'var(--accent2)';
     document.getElementById('genCalls').textContent = callCount;
   }
 
@@ -434,18 +434,18 @@ tabBtns.forEach(btn => {
     tape.appendChild(doneCell);
 
     callCount = values.length + 1;
-    isDone    = true;
+    isDone = true;
     document.getElementById('genValue').textContent = 'undefined';
-    document.getElementById('genDone').textContent  = 'true';
-    document.getElementById('genDone').style.color  = 'var(--accent3)';
+    document.getElementById('genDone').textContent = 'true';
+    document.getElementById('genDone').style.color = 'var(--accent3)';
     document.getElementById('genCalls').textContent = callCount;
-    document.getElementById('btnGenNext').disabled  = true;
+    document.getElementById('btnGenNext').disabled = true;
 
     // Reset so user can step again
     setTimeout(resetGenerator, 1200);
   }
 
-  // ── Event wiring ─────────────────────────────────────────────
+  // Event wiring
   document.querySelectorAll('.gen-type-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.gen-type-btn').forEach(b => b.classList.remove('active'));
@@ -460,17 +460,17 @@ tabBtns.forEach(btn => {
   document.getElementById('btnGenReset').addEventListener('click', resetGenerator);
   document.getElementById('btnSpread').addEventListener('click', spreadGenerator);
 
-  // ── Init ─────────────────────────────────────────────────────
+  // Init
   renderControls();
   resetGenerator();
 })();
 
-/* ════════════════════════════════════════════
+/* 
    DEMO 3 — ADVANCED JS QUIZ
    Topics: prototypes, destructuring, spread/rest,
            optional chaining, generators, ES modules,
            design patterns
-════════════════════════════════════════════ */
+*/
 (function quizModule() {
   const questions = [
     {
@@ -563,19 +563,19 @@ tabBtns.forEach(btn => {
     }
   ];
 
-  let current  = 0;
-  let score    = 0;
+  let current = 0;
+  let score = 0;
   let answered = false;
 
-  const qEl       = document.getElementById('quizQ');
-  const optsEl    = document.getElementById('quizOpts');
-  const feedEl    = document.getElementById('quizFeedback');
-  const nextBtn   = document.getElementById('btnNext');
-  const barEl     = document.getElementById('quizBar');
+  const qEl = document.getElementById('quizQ');
+  const optsEl = document.getElementById('quizOpts');
+  const feedEl = document.getElementById('quizFeedback');
+  const nextBtn = document.getElementById('btnNext');
+  const barEl = document.getElementById('quizBar');
   const counterEl = document.getElementById('quizCounter');
-  const scoreEl   = document.getElementById('quizScore');
-  const bodyEl    = document.getElementById('quizBody');
-  const resultEl  = document.getElementById('quizResult');
+  const scoreEl = document.getElementById('quizScore');
+  const bodyEl = document.getElementById('quizBody');
+  const resultEl = document.getElementById('quizResult');
 
   function loadQuestion(index) {
     return new Promise(resolve => setTimeout(() => resolve(questions[index]), 80));
@@ -595,13 +595,13 @@ tabBtns.forEach(btn => {
     qEl.style.whiteSpace = 'pre-line';
 
     counterEl.textContent = `Question ${index + 1} / ${questions.length}`;
-    scoreEl.textContent   = `Score: ${score}`;
-    barEl.style.width     = ((index / questions.length) * 100) + '%';
+    scoreEl.textContent = `Score: ${score}`;
+    barEl.style.width = ((index / questions.length) * 100) + '%';
 
     optsEl.innerHTML = '';
     q.opts.forEach((opt, i) => {
       const btn = document.createElement('button');
-      btn.className   = 'quiz-opt';
+      btn.className = 'quiz-opt';
       btn.textContent = opt;
       btn.addEventListener('click', () => handleAnswer(i, q));
       optsEl.appendChild(btn);
@@ -621,7 +621,7 @@ tabBtns.forEach(btn => {
     optBtns[q.ans].classList.add('correct');
     if (!correct) optBtns[chosen].classList.add('wrong');
 
-    feedEl.className   = 'quiz-feedback ' + (correct ? 'correct' : 'wrong');
+    feedEl.className = 'quiz-feedback ' + (correct ? 'correct' : 'wrong');
     feedEl.textContent = (correct ? '✓ Correct! ' : '✗ Not quite. ') + q.exp;
     nextBtn.classList.add('visible');
     scoreEl.textContent = `Score: ${score}`;
@@ -637,8 +637,8 @@ tabBtns.forEach(btn => {
   });
 
   document.getElementById('btnRestart').addEventListener('click', () => {
-    current  = 0;
-    score    = 0;
+    current = 0;
+    score = 0;
     resultEl.classList.remove('show');
     bodyEl.style.display = 'block';
     showQuestion(0);
@@ -653,14 +653,14 @@ tabBtns.forEach(btn => {
     document.getElementById('resultScore').textContent = score;
 
     let grade, msg;
-    if (pct === 1)       { grade = 'Perfect!';    msg = 'You nailed every Advanced JS concept. You\'re ready for videos 52+!'; }
-    else if (pct >= .87) { grade = 'Excellent';   msg = 'Strong grasp of advanced JS. Review the ones you missed and you\'re set.'; }
-    else if (pct >= .62) { grade = 'Good job';    msg = 'Solid foundation. Re-watch the relevant videos to fill the gaps.'; }
-    else if (pct >= .5)  { grade = 'Keep going';  msg = 'Half way there — prototypes and generators are tricky, keep practising.'; }
-    else                 { grade = 'Try again';   msg = 'Core concepts need more practice. Re-watch videos 36–51 and try again!'; }
+    if (pct === 1) { grade = 'Perfect!'; msg = 'You nailed every Advanced JS concept. You\'re ready for videos 52+!'; }
+    else if (pct >= .87) { grade = 'Excellent'; msg = 'Strong grasp of advanced JS. Review the ones you missed and you\'re set.'; }
+    else if (pct >= .62) { grade = 'Good job'; msg = 'Solid foundation. Re-watch the relevant videos to fill the gaps.'; }
+    else if (pct >= .5) { grade = 'Keep going'; msg = 'Half way there — prototypes and generators are tricky, keep practising.'; }
+    else { grade = 'Try again'; msg = 'Core concepts need more practice. Re-watch videos 36–51 and try again!'; }
 
     document.getElementById('resultGrade').textContent = grade;
-    document.getElementById('resultMsg').textContent   = msg;
+    document.getElementById('resultMsg').textContent = msg;
   }
 
   showQuestion(0);

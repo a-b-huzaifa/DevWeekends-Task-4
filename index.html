@@ -1,156 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Advanced JavaScript</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header class="header">
-  <p class="eyebrow">Advanced JavaScript — Videos 36–51</p>
-  <h1>Three <span>Advanced</span> Demos</h1>
-  <p>Prototypes · ES6+ syntax · iterators · generators · ES modules · design patterns</p>
-</header>
+  <header class="header">
+    <p class="eyebrow">Advanced JavaScript — Videos 36–51</p>
+    <h1>Three <span>Advanced</span> Demos</h1>
+    <p>Prototypes · ES6+ syntax · iterators · generators · ES modules · design patterns</p>
+  </header>
 
-<nav class="tabs">
-  <button class="tab-btn active" data-tab="proto">01 — Prototype Lab</button>
-  <button class="tab-btn"        data-tab="gen">02 — Generator</button>
-  <button class="tab-btn"        data-tab="quiz">03 — Quiz</button>
-</nav>
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="proto">01 — Prototype Lab</button>
+    <button class="tab-btn" data-tab="gen">02 — Generator</button>
+    <button class="tab-btn" data-tab="quiz">03 — Quiz</button>
+  </nav>
 
-<!-- PANEL 1: Prototype Chain Lab -->
-<section class="panel active" id="panel-proto">
-  <div class="card">
-    <p class="card-title">Demo 01 — Prototype Chain Explorer</p>
+  <!-- PANEL 1: Prototype Chain Lab -->
+  <section class="panel active" id="panel-proto">
+    <div class="card">
+      <p class="card-title">Demo 01 — Prototype Chain Explorer</p>
 
-    <div class="proto-builder">
-      <div class="proto-row">
-        <label class="proto-label">Choose base type</label>
-        <div class="proto-btns" id="protoTypeBtns">
-          <button class="proto-type-btn active" data-type="object">Plain Object</button>
-          <button class="proto-type-btn" data-type="array">Array</button>
-          <button class="proto-type-btn" data-type="function">Function</button>
-          <button class="proto-type-btn" data-type="class">ES6 Class</button>
+      <div class="proto-builder">
+        <div class="proto-row">
+          <label class="proto-label">Choose base type</label>
+          <div class="proto-btns" id="protoTypeBtns">
+            <button class="proto-type-btn active" data-type="object">Plain Object</button>
+            <button class="proto-type-btn" data-type="array">Array</button>
+            <button class="proto-type-btn" data-type="function">Function</button>
+            <button class="proto-type-btn" data-type="class">ES6 Class</button>
+          </div>
+        </div>
+        <div class="proto-chain-visual" id="protoChain"></div>
+        <div class="proto-playground">
+          <p class="proto-label">Live property lookup — type a property name:</p>
+          <div class="proto-input-row">
+            <input class="proto-input" id="protoLookup" placeholder="e.g. toString, hasOwnProperty, length…" />
+            <button class="btn-lookup" id="btnLookup">Look up</button>
+          </div>
+          <div class="proto-result" id="protoResult"></div>
         </div>
       </div>
-      <div class="proto-chain-visual" id="protoChain"></div>
-      <div class="proto-playground">
-        <p class="proto-label">Live property lookup — type a property name:</p>
-        <div class="proto-input-row">
-          <input class="proto-input" id="protoLookup" placeholder="e.g. toString, hasOwnProperty, length…" />
-          <button class="btn-lookup" id="btnLookup">Look up</button>
+
+      <div class="concepts">
+        <span class="tag">prototypes</span>
+        <span class="tag">prototype chain</span>
+        <span class="tag">ES6 classes</span>
+        <span class="tag">inheritance</span>
+        <span class="tag">Object.create</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PANEL 2: Generator Visualiser -->
+  <section class="panel" id="panel-gen">
+    <div class="card">
+      <p class="card-title">Demo 02 — Generator &amp; Iterator Visualiser</p>
+
+      <div class="gen-selector">
+        <button class="gen-type-btn active" data-gen="range">Range</button>
+        <button class="gen-type-btn" data-gen="fibonacci">Fibonacci</button>
+        <button class="gen-type-btn" data-gen="infinite">Infinite Naturals</button>
+      </div>
+
+      <div class="gen-controls" id="genControls"></div>
+
+      <div class="gen-tape-wrap">
+        <p class="proto-label">Generator output — press <strong>Next →</strong> to call <code>.next()</code></p>
+        <div class="gen-tape" id="genTape">
+          <span class="tape-empty">Press Next to start the generator…</span>
         </div>
-        <div class="proto-result" id="protoResult"></div>
+      </div>
+
+      <div class="gen-state-box">
+        <div class="gen-state-row">
+          <span class="state-key">last value</span>
+          <span class="state-val" id="genValue">—</span>
+        </div>
+        <div class="gen-state-row">
+          <span class="state-key">done</span>
+          <span class="state-val" id="genDone">false</span>
+        </div>
+        <div class="gen-state-row">
+          <span class="state-key">calls so far</span>
+          <span class="state-val" id="genCalls">0</span>
+        </div>
+      </div>
+
+      <div class="gen-action-row">
+        <button class="btn-gen-next" id="btnGenNext">Next →</button>
+        <button class="btn-gen-reset" id="btnGenReset">Reset</button>
+        <button class="btn-gen-spread" id="btnSpread">[ ...spread ]</button>
+      </div>
+
+      <div class="gen-code-box" id="genCode"></div>
+
+      <div class="concepts">
+        <span class="tag">generators</span>
+        <span class="tag">iterators</span>
+        <span class="tag">yield</span>
+        <span class="tag">Symbol.iterator</span>
+        <span class="tag">for...of</span>
+        <span class="tag">spread</span>
       </div>
     </div>
+  </section>
 
-    <div class="concepts">
-      <span class="tag">prototypes</span>
-      <span class="tag">prototype chain</span>
-      <span class="tag">ES6 classes</span>
-      <span class="tag">inheritance</span>
-      <span class="tag">Object.create</span>
-    </div>
-  </div>
-</section>
+  <!-- PANEL 3: Quiz -->
+  <section class="panel" id="panel-quiz">
+    <div class="card">
+      <p class="card-title">Demo 03 — Advanced JS Quiz</p>
 
-<!-- PANEL 2: Generator Visualiser -->
-<section class="panel" id="panel-gen">
-  <div class="card">
-    <p class="card-title">Demo 02 — Generator &amp; Iterator Visualiser</p>
+      <div id="quizBody">
+        <div class="quiz-progress-bar">
+          <div class="quiz-progress-fill" id="quizBar" style="width:0%"></div>
+        </div>
+        <div class="quiz-meta">
+          <span id="quizCounter">Question 1 / 8</span>
+          <span id="quizScore">Score: 0</span>
+        </div>
+        <p class="quiz-q" id="quizQ"></p>
+        <div class="quiz-options" id="quizOpts"></div>
+        <div class="quiz-feedback hidden" id="quizFeedback"></div>
+        <div class="quiz-next-row">
+          <button class="btn-next" id="btnNext">Next →</button>
+        </div>
+      </div>
 
-    <div class="gen-selector">
-      <button class="gen-type-btn active" data-gen="range">Range</button>
-      <button class="gen-type-btn" data-gen="fibonacci">Fibonacci</button>
-      <button class="gen-type-btn" data-gen="infinite">Infinite Naturals</button>
-    </div>
+      <div class="quiz-result" id="quizResult">
+        <div class="result-score" id="resultScore"></div>
+        <div class="result-label">out of 8</div>
+        <div class="result-grade" id="resultGrade"></div>
+        <p class="result-msg" id="resultMsg"></p>
+        <button class="btn-restart" id="btnRestart">Try Again</button>
+      </div>
 
-    <div class="gen-controls" id="genControls"></div>
-
-    <div class="gen-tape-wrap">
-      <p class="proto-label">Generator output — press <strong>Next →</strong> to call <code>.next()</code></p>
-      <div class="gen-tape" id="genTape">
-        <span class="tape-empty">Press Next to start the generator…</span>
+      <div class="concepts">
+        <span class="tag">prototypes</span>
+        <span class="tag">destructuring</span>
+        <span class="tag">spread / rest</span>
+        <span class="tag">optional chaining</span>
+        <span class="tag">generators</span>
+        <span class="tag">ES modules</span>
+        <span class="tag">design patterns</span>
       </div>
     </div>
+  </section>
 
-    <div class="gen-state-box">
-      <div class="gen-state-row">
-        <span class="state-key">last value</span>
-        <span class="state-val" id="genValue">—</span>
-      </div>
-      <div class="gen-state-row">
-        <span class="state-key">done</span>
-        <span class="state-val" id="genDone">false</span>
-      </div>
-      <div class="gen-state-row">
-        <span class="state-key">calls so far</span>
-        <span class="state-val" id="genCalls">0</span>
-      </div>
-    </div>
-
-    <div class="gen-action-row">
-      <button class="btn-gen-next" id="btnGenNext">Next →</button>
-      <button class="btn-gen-reset" id="btnGenReset">Reset</button>
-      <button class="btn-gen-spread" id="btnSpread">[ ...spread ]</button>
-    </div>
-
-    <div class="gen-code-box" id="genCode"></div>
-
-    <div class="concepts">
-      <span class="tag">generators</span>
-      <span class="tag">iterators</span>
-      <span class="tag">yield</span>
-      <span class="tag">Symbol.iterator</span>
-      <span class="tag">for...of</span>
-      <span class="tag">spread</span>
-    </div>
-  </div>
-</section>
-
-<!-- PANEL 3: Quiz -->
-<section class="panel" id="panel-quiz">
-  <div class="card">
-    <p class="card-title">Demo 03 — Advanced JS Quiz</p>
-
-    <div id="quizBody">
-      <div class="quiz-progress-bar">
-        <div class="quiz-progress-fill" id="quizBar" style="width:0%"></div>
-      </div>
-      <div class="quiz-meta">
-        <span id="quizCounter">Question 1 / 8</span>
-        <span id="quizScore">Score: 0</span>
-      </div>
-      <p class="quiz-q" id="quizQ"></p>
-      <div class="quiz-options" id="quizOpts"></div>
-      <div class="quiz-feedback hidden" id="quizFeedback"></div>
-      <div class="quiz-next-row">
-        <button class="btn-next" id="btnNext">Next →</button>
-      </div>
-    </div>
-
-    <div class="quiz-result" id="quizResult">
-      <div class="result-score" id="resultScore"></div>
-      <div class="result-label">out of 8</div>
-      <div class="result-grade" id="resultGrade"></div>
-      <p class="result-msg" id="resultMsg"></p>
-      <button class="btn-restart" id="btnRestart">Try Again</button>
-    </div>
-
-    <div class="concepts">
-      <span class="tag">prototypes</span>
-      <span class="tag">destructuring</span>
-      <span class="tag">spread / rest</span>
-      <span class="tag">optional chaining</span>
-      <span class="tag">generators</span>
-      <span class="tag">ES modules</span>
-      <span class="tag">design patterns</span>
-    </div>
-  </div>
-</section>
-
-<script src="script.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
+
 </html>
